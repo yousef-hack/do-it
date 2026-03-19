@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Just do it</title>
+  <link rel="stylesheet" href="stlye.css" />
+</head>
+<body>
+  <main class="app" role="application" aria-labelledby="app-title">
+    <header class="app-header">
+      <div class="title-wrap">
+        <h1 id="app-title">To‑Do</h1>
+        <div class="subtitle">Organize, prioritize, and ship</div>
+      </div>
+
+      <div class="settings" id="settings-panel" aria-hidden="false">
+        <label class="sr-only" for="theme-select">Theme</label>
+        <select id="theme-select" title="Theme" aria-label="Theme">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+
+        <label class="sr-only" for="accent-preset">Accent color</label>
+        <select id="accent-preset" title="Accent preset" aria-label="Accent color">
+          <option value="#2b7cff">Blue</option>
+          <option value="#ff7a59">Coral</option>
+          <option value="#7cdb7c">Mint</option>
+          <option value="#b86bff">Violet</option>
+        </select>
+
+        <button id="import-btn" title="Import JSON" aria-label="Import tasks">Import</button>
+        <button id="export-btn" title="Export JSON" aria-label="Export tasks">Export</button>
+        <input id="import-file" type="file" accept="application/json" style="display:none" />
+      </div>
+    </header>
+
+    <form id="todo-form" class="todo-form" autocomplete="off" aria-label="Add task">
+      <input id="todo-input" type="text" placeholder="Add a new task..." aria-label="Task description" />
+      <input id="due-input" type="date" aria-label="Due date" />
+      <select id="prio-select" title="Priority" aria-label="Priority">
+        <option value="low">Low</option>
+        <option value="medium" selected>Medium</option>
+        <option value="high">High</option>
+      </select>
+      <button id="add-btn" type="submit" aria-label="Add task">Add</button>
+    </form>
+
+    <div class="controls-row">
+      <div class="filters" role="tablist" aria-label="Filters">
+        <button data-filter="all" class="filter active" role="tab" aria-selected="true">All</button>
+        <button data-filter="active" class="filter" role="tab">Active</button>
+        <button data-filter="completed" class="filter" role="tab">Completed</button>
+        <button data-filter="due" class="filter" role="tab">Due Soon</button>
+      </div>
+
+      <div class="progress-wrap" aria-hidden="false">
+        <div id="progress-bar" class="progress-bar" aria-hidden="true"><div class="progress-fill" style="width:0%"></div></div>
+        <div id="progress-text" class="progress-text" aria-live="polite">0/0</div>
+      </div>
+    </div>
+
+    <ul id="todo-list" class="todo-list" aria-live="polite"></ul>
+
+    <div class="controls">
+      <button id="clear-completed">Clear completed</button>
+      <button id="clear-all">Clear all</button>
+    </div>
+  </main>
+
+  <div id="toast" class="toast" aria-live="assertive" aria-atomic="true"></div>
+
+  <script src="index.js"></script>
+</body>
+</html>
+
